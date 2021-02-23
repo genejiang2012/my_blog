@@ -78,8 +78,6 @@ vim-minimal.x86_64                   2:7.4.629-6.el7                   @anaconda
 --enable-multibyte \
 --enable-rubyinterp=dynamic \
 --with-ruby-command=/usr/bin/ruby \
---enable-pythoninterp=dynamic \
---with-python-config-dir=/usr/lib64/python2.7/config \
 --enable-python3interp=dynamic \
 --with-python3-config-dir=/usr/lib64/python3.6/config-3.6m-x86_64-linux-gnu \
 --enable-cscope \
@@ -91,6 +89,9 @@ vim-minimal.x86_64                   2:7.4.629-6.el7                   @anaconda
 --with-compiledby="genejiang2012@outlook.com" \
 --enable-fail-if-missing \
 --prefix=/usr/local
+
+--enable-pythoninterp=dynamic \
+--with-python-config-dir=/usr/lib64/python2.7/config \
 ```
 
 参数说明如下：
