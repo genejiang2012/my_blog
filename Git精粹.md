@@ -2,6 +2,14 @@
 
 [TOC]
 
+## Git不能推送文件
+
+```
+git config --global --unset http.proxy
+```
+
+
+
 ## Git使用SSH访问
 
 ### Windows
@@ -23,7 +31,7 @@
 	EDZ@WIN-2QINK1GUNEC MINGW64 ~
     $ git config user.name
     zhengrong jiang
-
+	
     EDZ@WIN-2QINK1GUNEC MINGW64 ~
     $ git config user.email
     zhengrong.jiang@chiefclouds.com
