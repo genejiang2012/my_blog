@@ -2,7 +2,8 @@
 
 [TOC]
 
-## Git不能推送文件
+## Git不能推送文件OpenSSL SSL_connect: Connection was aborted in
+connection to github.com:443
 
 ```
 git config --global --unset http.proxy
