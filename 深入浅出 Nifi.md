@@ -52,3 +52,29 @@
 - 错误处理变得像基本逻辑一样自然，而不是粗粒度的全部捕获（catch-all）
 - 数据进入和退出系统的点，以及它是如何流动的，都是容易理解和跟踪的
 
+## NIFI架构
+
+### NIFI单节点
+
+![](.\images\nifi_structure.png)
+
+
+
+- Web Server（网络服务器）
+  - web服务器的目的是承载Nii基于http的命令和控制APl。
+- Flow Controller（流控制器）
+  - 是整个操作的核心，为将要运行的组件提供线程，管理调度。
+- Extensions（扩展）
+  - 有各种类型的E扩展，这些扩展在其他文档中进行了描述。这里的关键点是E扩展在MM中操作和执行。
+- FlowFile Repository（流文件存储库）
+  - 对于给定一个流中正在活动的FlowFile，FlowEile Repository就是NI保持跟踪这个FlowElle状态的地方。
+- ElowFile Repository的实现是可插拔的（多种选择，可配置，甚至可以自己实现），默认实现是使用Write-Ahead Log技术（简单普及下，WAL的核心思想是：在数据写入库之前，先写入到日志.再将日志记录变更到存储器中。）写到指定磁盘目录。
+- Content Repository（内容存储库）
+  - Content Repository是给定FlowFile的实际内容字节存储的地方。Content Repository的实现是可插拔的。默认方法是一种相当简单的机制，它将数据块存储在文件系统中。可以指定多个文件系统存储位置，以便获得不同的物理分区以减少任何单个卷上的争用。（所以坏境最佳实践时可配置多个目录，挂载不同磁盘，提高IO）
+- Provenance Repository（源头存储库）
+  - Provenance Repository是存储所有事件数据的地方。Provenance Repository的实现是可插拔的，默认实现是使用一个或多个物理磁盘卷。在每个位置内的事件数据都是被索引并可搜索的。
+
+### NIFI集群
+
+![image-20210630152829561](images/image-20210630152829561.png)
+
